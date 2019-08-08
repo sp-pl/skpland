@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 
 import Main from './components/main/main.jsx';
 
+import 'normalize.css'
+import './common/assets/styles/style.scss';
+
 import * as serviceWorker from './serviceWorker';
 
 
