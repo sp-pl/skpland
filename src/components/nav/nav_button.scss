@@ -1,0 +1,64 @@
+.nav-button-container{
+	height:100%;
+	.nav-button{
+		position:relative;
+		z-index:10;
+		display: flex;
+		flex-direction:column;
+		justify-content: space-around;
+		align-content: center;
+		align-items:flex-end;
+		height:100%;
+		padding:5px;
+		cursor:pointer;
+		background: #dc143c;
+		.nav-span{
+			display:flex;
+			justify-content: flex-end;
+			height:3px;
+			width:100%;
+			.inner{
+				display:block;
+				width:100%;
+				height:100%;
+				background-color:black;
+			}
+		}
+		.show-menu-state{
+			.inner{
+				width:0;
+				transition: width .7s ease;
+			}
+		}
+		.hide-menu-state{
+			
+		}
+		.close-second-span{
+			position: absolute;
+			width: 42px;
+			bottom: 14px;
+			transform: rotate(135deg);
+			right: -6px;
+			display: flex;
+			justify-content: flex-end;
+			.inner{
+				width:100%;
+				height:100%;
+			}
+		}
+		.close-third-span{
+			position: absolute;
+			width: 42px;
+			bottom: 14px;
+			transform: rotate(45deg);
+			right: -6px;
+			display: flex;
+			justify-content: flex-start;
+			.inner{
+				width:100%;
+				height:100%;
+			}
+		}
+		
+	}
+}	

@@ -1,7 +1,25 @@
-.main-nav{
-	width: 70px;
-	position: absolute;
-	right: 10px;
-	background: red;
-	height: 35px;
-}
+
+	.main-nav{
+		width: 40px;
+		height:40px;
+		position: fixed;
+		right: 40px;
+		top:40px;
+		.nav-ul-container{
+			
+			.nav-ul{
+				list-style-type: none;
+				margin:0;
+				padding:0;
+			}
+		}
+		.nav-ul-container.active{
+			position: relative;
+			padding-top: 40px;
+			top: -45px;
+			background: tomato;
+			left: -555px;
+			width: 600px;
+			transition:all 1s ease;
+		}
+	}

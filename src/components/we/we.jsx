@@ -9,8 +9,8 @@ class We extends React.Component{
 	render(){
 		return(
 			<div>
-				<header className="main-header">
-					<h1>SKLEPOLAND<span>.</span>PL</h1>
+				<header className="main-header-container">
+					<h1 className="company-header">SKLEPOLAND<span>.</span>PL</h1>
 				</header>
 				
 				Sklepoland __LOGO__<br/>
