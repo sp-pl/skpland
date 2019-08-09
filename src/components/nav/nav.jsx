@@ -16,25 +16,32 @@ class Nav extends React.Component{
 		}
 		this.navUlContainer = React.createRef();
 		this.menuListControl = this.menuListControl.bind(this);
+
 	}
+
+
 	menuListControl(){
-		if(this.state.isOpen){
-			this.setState({
-				isOpen: !isOpen;
-			})
+		if(!this.state.isOpen){
+			this.setState(prevState => ({
+				isOpen: !prevState.isOpen
+			}))
 			setTimeout(() => {
 				this.navUlContainer.current.classList.add('active')
 			},100)
 		}else{
 
 		}
-		
+
+		function updater(){
+			return this.state.isOpen
+		}
 	}
+	
 	render(){
 		return(
 			<Router>
 					<nav className="main-nav" onClick={() => this.menuListControl()} >
-						<NavButton navState={this.state.isOpen}/>
+						<NavButton navState={() => this.updater()}/>
 						<div 
 							className="nav-ul-container"
 							ref={this.navUlContainer}>

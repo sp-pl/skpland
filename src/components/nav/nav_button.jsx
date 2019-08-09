@@ -12,16 +12,20 @@ class NavButton extends React.Component{
 	}
 
 	buttonAnimation(evt){
+		
 		const spanArray = [
 			this.firstNavSpan.current,
 			this.secondNavSpan.current,
 			this.thirdNavSpan.current
 		];
+
+		if(this.props.navState){
+			console.log('trued')
+		}
+
 		let i = 0;
-		console.log(this.props.navState)
 		//animation for hide Horizontal spans on first click
 		let hideHorizontalSpans = setInterval(() => {
-			console.log(i)
 			spanArray[i].classList.add('show-menu-state')
 			i++
 			if(i === 3){
