@@ -10,53 +10,46 @@ class NavButton extends React.Component{
 		this.secondNavSpan = React.createRef();
 		this.thirdNavSpan = React.createRef();
 	}
+	componentWillReceiveProps(nextProps) {
+		this.buttonAnimation(nextProps.navState)
+	}
 
-	buttonAnimation(evt){
-		
+
+
+	buttonAnimation(navBool){
+
 		const spanArray = [
 			this.firstNavSpan.current,
 			this.secondNavSpan.current,
 			this.thirdNavSpan.current
 		];
+		console.log(navBool)
+		if(navBool){
+			let i = 0;
+			this.navButton.current.classList.add('active')
+			//animation for hide Horizontal spans on first click
+			let hideHorizontalSpans = setInterval(() => {
+				spanArray[i].classList.add('show-menu-state')
+				i++
+				if(i === 3){
+					clearInterval(hideHorizontalSpans)
+					turnLastTwoSpans()
+				}
 
-		if(this.props.navState){
-			console.log('trued')
-		}
-
-		let i = 0;
-		//animation for hide Horizontal spans on first click
-		let hideHorizontalSpans = setInterval(() => {
-			spanArray[i].classList.add('show-menu-state')
-			i++
-			if(i === 3){
-				clearInterval(hideHorizontalSpans)
-				turnLastTwoSpans()
+			},200)
+			//end of: animation for remove horizontal spans on first click
+			
+			//animation for show X sign
+			function turnLastTwoSpans(){
+				setTimeout(() => {
+						spanArray[1].classList.add('close-second-span','show-menu-state')
+						spanArray[2].classList.add('close-third-span','show-menu-state')
+				},300)
 			}
-		},300)
-		//end of: animation for remove horizontal spans on first click
-		
-		//animation for show X sign
-		function turnLastTwoSpans(){
-			setTimeout(() => {
-					spanArray[1].classList.add('close-second-span','show-menu-state')
-					spanArray[2].classList.add('close-third-span','show-menu-state')
-			},700)
+			//end of: animation for show x sign
+		}else{
+
 		}
-		//end of: animation for show x sign
-
-		// function fillLastTwoSpans(){
-		// 	let i = 1;
-		// 	let lastTwoSpansInterval = setInterval(() => {
-		// 		i++
-		// 		spanArray[i].classList.add('close-second-span')
-		// 		spanArray[i].classList.add('close-third-span')
-
-		// 	},300)
-		// }
-
-
-		// this.firstSpan.current.classList.add('first-start-hide');
-
 	}
 
 	render(){
@@ -65,7 +58,8 @@ class NavButton extends React.Component{
 				<div 
 					className="nav-button"
 					ref={this.navButton}
-					onClick={(evt) => this.buttonAnimation(evt)}>
+					// onClick={(evt) => this.buttonAnimation(evt)}
+					>
 					<span 
 						className="nav-span"
 						ref={this.firstNavSpan}>

@@ -12,16 +12,18 @@
 		padding:5px;
 		cursor:pointer;
 		background: #dc143c;
+		transition:1s ease;
 		.nav-span{
 			display:flex;
 			justify-content: flex-end;
-			height:3px;
+			height:4px;
 			width:100%;
 			.inner{
 				display:block;
 				width:100%;
 				height:100%;
 				background-color:black;
+				border-radius:50px;
 			}
 		}
 		.show-menu-state{
@@ -36,29 +38,34 @@
 		.close-second-span{
 			position: absolute;
 			width: 42px;
-			bottom: 14px;
+			bottom: 18px;
 			transform: rotate(135deg);
-			right: -6px;
+			right: -1px;
 			display: flex;
 			justify-content: flex-end;
 			.inner{
 				width:100%;
 				height:100%;
+				background-color:#dc143c;
 			}
 		}
 		.close-third-span{
 			position: absolute;
 			width: 42px;
-			bottom: 14px;
+			bottom: 18px;
 			transform: rotate(45deg);
-			right: -6px;
+			right: -1px;
 			display: flex;
 			justify-content: flex-start;
 			.inner{
 				width:100%;
 				height:100%;
+				background-color:#dc143c;
 			}
 		}
-		
+	}
+	.nav-button.active{
+		background:white;
+		transition:background 1s ease;
 	}
 }	

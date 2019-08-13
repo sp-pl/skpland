@@ -9,6 +9,12 @@ body{
 body *{
 	box-sizing:border-box;
 }
+a{
+	text-decoration: none;
+}
+a:hover{
+color:inherit;
+}
 #root{
 	height:100%;
 }

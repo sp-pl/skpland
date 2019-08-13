@@ -6,18 +6,29 @@
 		right: 40px;
 		top:40px;
 		.nav-ul-container{
-			
+			text-align:center;
+			display:none;
+			transition:all 1s ease;
 			.nav-ul{
 				list-style-type: none;
-				margin:0;
-				padding:0;
+				margin: 20px 0 20px 0;
+				padding: 0;
+				border-bottom: 4px solid white;
+				.nav-li{
+					.nav-a{
+						color:white;
+						font-size:21px;
+						padding:10px;
+					}
+				}
 			}
 		}
 		.nav-ul-container.active{
+			display:block !important;
 			position: relative;
 			padding-top: 40px;
 			top: -45px;
-			background: tomato;
+			background:  #dc143c;
 			left: -555px;
 			width: 600px;
 			transition:all 1s ease;

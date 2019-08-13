@@ -12,7 +12,8 @@ class Nav extends React.Component{
 	constructor(){
 		super();
 		this.state = {
-			isOpen : false
+			isOpen : false,
+			isAnimated : false
 		}
 		this.navUlContainer = React.createRef();
 		this.menuListControl = this.menuListControl.bind(this);
@@ -21,41 +22,63 @@ class Nav extends React.Component{
 
 
 	menuListControl(){
-		if(!this.state.isOpen){
-			this.setState(prevState => ({
-				isOpen: !prevState.isOpen
-			}))
-			setTimeout(() => {
+
+		this.setState(prevState => ({
+			isOpen: !prevState.isOpen
+		}), () => {
+			if(this.state.isOpen){
+				//open menu
 				this.navUlContainer.current.classList.add('active')
-			},100)
-		}else{
+			}else{
+				//close menu
+				this.navUlContainer.current.classList.remove('active')
+			}
 
-		}
+		})
 
-		function updater(){
-			return this.state.isOpen
-		}
-	}
+		//animation timer
+		this.setState(prevState => ({
+			isAnimated: !prevState.isAnimated
+		}), () => {
+			setTimeout(() => {
+				this.setState(prevState => ({
+					isAnimated: !prevState.isAnimated
+				}))
+			},1000)
+		})
+		//end of: animation timer	
+	}	
 	
 	render(){
 		return(
 			<Router>
 					<nav className="main-nav" onClick={() => this.menuListControl()} >
-						<NavButton navState={() => this.updater()}/>
+						<NavButton navState={this.state.isOpen}/>
 						<div 
 							className="nav-ul-container"
 							ref={this.navUlContainer}>
 							<ul className="nav-ul">
-								<li>
-									<Link to="/"> Start </Link>
+								<li className="nav-li">
+									<Link 
+										to="/"
+										className="nav-a"> Start </Link>
 								</li>
-								<li>
-									<Link to="/uslugi">Usługi</Link>
+								<li className="nav-li">
+									<Link 
+										to="/uslugi"
+										className="nav-a">Usługi</Link>
 								</li>
-								<li>
-									<Link to="kontakt">Kontakt</Link>
+								<li className="nav-li">
+									<Link 
+										to="kontakt"
+										className="nav-a">Kontakt</Link>
 								</li>
 							</ul>
+							<div className="nav-like">
+								<div id="fb-root"></div>
+								<script async defer crossOrigin="anonymous" src="https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v4.0&appId=1954006061594073&autoLogAppEvents=1"></script>
+								<div class="fb-like" data-href="https://www.facebook.com/Sklepolandpl-464502657455570/?ref=py_c" data-width="" data-layout="button_count" data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
+							</div>
 						</div>
 					</nav>
 					<div className="dupa">		
